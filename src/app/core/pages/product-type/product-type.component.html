@@ -1,0 +1,63 @@
+<div class="row">
+
+  <!-- FORM -->
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body p-4">
+
+        <!-- FORM -->
+        <form >
+          <!-- THE Id's Employee -->
+          <input type="hidden" name="_id">
+
+          <h2>TIPO DE PRODUCTO</h2>
+
+          <div class="form-group m-2 col-md-12">
+            <input type="text" name="name"
+              placeholder="ingrese el nombre" class="form-control">
+          </div>
+
+          <div class="input-group m-2 col-md-12">
+            <label class="input-group-text" for="inputGroupSelect01">Categorias</label>
+            <select class="form-select" id="inputGroupSelect01">
+              <option selected>Choose...</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+
+          <button class="btn btn-primary m-2" >Limpiar</button>
+          <button class="btn btn-secondary m-2">Guardar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- TABLE -->
+<div class="col-md-8">
+  <table class="table table-striped">
+    <thead>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Categoria</th>
+      <th>Operaciones</th>
+    </thead>
+    <tbody>
+      <tr >
+        <td>{{ "name" }}</td>
+        <td>{{ "position" }}</td>
+        <td>{{ "office" }}</td>
+        <td>
+          <a class="btn btn-secondary btn-sm">
+            <i class="material-icons">edit</i>
+          </a>
+          <a  class="btn btn-danger btn-sm">
+            <i class="material-icons">delete</i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>

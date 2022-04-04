@@ -4,6 +4,7 @@ import { LayoutComponent } from '../app/core/components/layout/layout.component'
 import { HomeComponent } from '../app/core/pages/home/home.component';
 import { ListCategoryComponent } from './core/pages/category/components/list-category/list-category.component';
 import { FormCategoryComponent } from './core/pages/category/components/form-category/form-category.component';
+import { ProductTypeComponent } from './core/pages/product-type/product-type.component';
 
 const ROUTES : Routes = [
   {
@@ -17,7 +18,8 @@ const ROUTES : Routes = [
         { path: 'list', component: ListCategoryComponent },
         { path: 'form', component: FormCategoryComponent },
         ]
-      }
+      },
+      { path: 'product-type', component: ProductTypeComponent }
     ]
   }
 ];

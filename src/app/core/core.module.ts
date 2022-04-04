@@ -6,12 +6,14 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { RouterModule } from '@angular/router';
 import { CategoryModule } from './pages/category/category.module';
 import { ProductModule } from './pages/product/product.module';
+import { ProductTypeComponent } from './pages/product-type/product-type.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     NavbarComponent,
-    LayoutComponent
+    LayoutComponent,
+    ProductTypeComponent
   ],
   imports: [
     CommonModule,
