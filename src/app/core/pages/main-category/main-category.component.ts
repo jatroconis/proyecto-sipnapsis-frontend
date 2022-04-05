@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { CategoryService } from 'src/app/services/category.service';
 import { category } from 'src/app/models/category';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-main-category',
@@ -12,25 +12,33 @@ import { NgForm } from '@angular/forms';
 })
 export class MainCategoryComponent implements OnInit {
   categorys: category[] = [];
-  constructor(public categoryService: CategoryService) { }
+  categoryForm!: FormGroup;
+  constructor(
+    public categoryService: CategoryService,
+    private formBuilder : FormBuilder
+  ) {
+    this.initForm();
+   }
 
   ngOnInit(): void {
     this.getCategories();
   }
 
-  name:string="";
+  initForm(): void{
+    this.categoryForm = this.formBuilder.group({
+      id: 0,
+      nombre: ['', Validators.required]
+    });
+  }
 
-  cleanForm(form? : NgForm){
-    if (form) {
-      form.reset();
-    }
+  cleanForm(){
+    this.categoryForm.reset();
   }
 
   // obtener lista de categorias de la base de datos
   getCategories() {
     this.categoryService.getCategories()
       .subscribe(res => {
-        console.log(res);
         this.categorys = res;
     }, badRequest => {
       console.log(badRequest);
@@ -38,12 +46,25 @@ export class MainCategoryComponent implements OnInit {
 
   }
 
-  onSave(form?: NgForm){
-    this.categoryService.postCategory(form?.value).subscribe((res) => {
-      this.getCategories();
-      this.cleanForm();
-    });
+  deleteById(idCategory: number){
+    this.categoryService.deleteCategory(idCategory)
+      .subscribe(() => {
+        this.categorys = this.categorys.filter(category => category.id !== idCategory);
+      }, badRequest => {
+        console.log(badRequest);
+      })
   }
 
+  onSubmit(){
+    const isEdit : boolean = this.categoryForm.get('id')?.value !== 0;
+    this.categoryService[isEdit ? 'putCategory' : 'postCategory']
+      (this.categoryForm.value).subscribe(() => {
+        this.getCategories();
+        this.cleanForm();
+      })
+  }
 
+  setCategory(category : category){
+    this.categoryForm.setValue(category);
+  }
 }

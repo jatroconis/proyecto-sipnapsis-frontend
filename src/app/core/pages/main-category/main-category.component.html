@@ -4,7 +4,7 @@
     <div class="card">
       <div class="card-body p-4">
         <!-- FORM -->
-        <form #formCategory="ngForm" (ngSubmit)="onSave(formCategory)">
+        <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
           <!-- THE Id's Employee -->
           <input type="hidden" name="_id" />
 
@@ -13,17 +13,19 @@
           <div class="form-group m-2 col-md-12">
             <input
               type="text"
-              name="name"
-              [(ngModel)]="name"
+              name="nombre"
               placeholder="ingrese el nombre"
+              formControlName="nombre"
               class="form-control"
             />
           </div>
 
-          <button class="btn btn-primary m-2" (click)="cleanForm(formCategory)">
+          <button class="btn btn-primary m-2" (click)="cleanForm()">
             Limpiar
           </button>
-          <button class="btn btn-secondary m-2" type="submit">Guardar</button>
+          <button class="btn btn-secondary m-2" type="submit" [disabled]="categoryForm.invalid">
+            Guardar
+          </button>
         </form>
       </div>
     </div>
@@ -42,10 +44,10 @@
           <td>{{ category.id }}</td>
           <td>{{ category.nombre }}</td>
           <td>
-            <a class="btn btn-secondary btn-sm">
+            <a class="btn btn-secondary btn-sm" (click)="setCategory(category)">
               <i class="material-icons">Editar</i>
             </a>
-            <a class="btn btn-danger btn-sm">
+            <a class="btn btn-danger btn-sm" (click)="deleteById(category.id)">
               <i class="material-icons">Borrar</i>
             </a>
           </td>

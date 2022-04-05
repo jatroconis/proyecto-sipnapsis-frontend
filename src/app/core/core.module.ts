@@ -6,7 +6,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { RouterModule } from '@angular/router';
 import { ProductTypeComponent } from './pages/product-type/product-type.component';
 import { MainCategoryComponent } from './pages/main-category/main-category.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductComponent } from './pages/product/product.component';
 
 @NgModule({
@@ -21,7 +21,8 @@ import { ProductComponent } from './pages/product/product.component';
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CoreModule { }

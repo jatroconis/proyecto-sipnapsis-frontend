@@ -25,7 +25,7 @@ export class CategoryService {
     return this.http.put(`${this.URL_API}/categorias/${category.id}`, category);
   }
 
-  deleteCategory(_id: string) {
+  deleteCategory(_id: number) {
     return this.http.delete(`${this.URL_API}/categorias/${_id}`);
   }
 
