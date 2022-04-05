@@ -7,7 +7,7 @@ import { TypeProduct } from '../models/typeProduct';
   providedIn: 'root'
 })
 export class TipoProductoService {
-  URL_TIPO_PRODUCTO: string = `${environment.apiUrl}/tipoProducto`;
+  URL_TIPO_PRODUCTO: string = `${environment.apiUrl}/tipoProductos`;
   constructor(private http: HttpClient) { }
 
   save(typeProduct: TypeProduct){
@@ -15,11 +15,11 @@ export class TipoProductoService {
   }
 
   update(typeProduct: TypeProduct){
-    this.http.put<TypeProduct>(`${this.URL_TIPO_PRODUCTO}/${typeProduct.id}`, typeProduct);
+    return this.http.put<TypeProduct>(`${this.URL_TIPO_PRODUCTO}/${typeProduct.id}`, typeProduct);
   }
 
   getTypeProducts(){
-    return this.http.get<TypeProduct>(this.URL_TIPO_PRODUCTO);
+    return this.http.get<TypeProduct[]>(this.URL_TIPO_PRODUCTO);
   }
 
   getById(idTypeProduct: number){

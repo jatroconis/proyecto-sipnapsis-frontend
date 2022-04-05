@@ -1,5 +1,5 @@
 export interface TypeProduct{
     id: number,
     nombre: string,
-    iD_cateogria: number
+    iD_categoria: number
 }
