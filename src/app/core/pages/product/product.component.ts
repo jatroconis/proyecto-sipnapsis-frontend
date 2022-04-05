@@ -2,29 +2,43 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/models/product';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { TypeProduct } from 'src/app/models/typeProduct';
+import { TipoProductoService } from 'src/app/services/tipo-producto.service';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
+  typeProducts: TypeProduct[] = [];
   products: Product[] = [];
   productForm!: FormGroup;
   constructor(
     public productService: ProductService,
-    private formBuilder : FormBuilder
+    private formBuilder : FormBuilder,
+    private _typeproduct: TipoProductoService
   ) {
     this.initForm();
    }
 
   ngOnInit(): void {
     this.getProducts();
+    this.getTypeproduct();
+  }
+
+  getTypeproduct(): void {
+    this._typeproduct
+      .getTypeProducts()
+      .subscribe((typeproduct) => (this.typeProducts = typeproduct));
   }
 
   initForm(): void{
     this.productForm = this.formBuilder.group({
       id: 0,
-      nombre: ['', Validators.required]
+      nombre: ['', Validators.required],
+      descripcion: ['', Validators.required],
+      codigo: ['', Validators.required],
+      iD_tipoProducto: ['', Validators.required],
     });
   }
 

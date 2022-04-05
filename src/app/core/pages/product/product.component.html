@@ -34,21 +34,23 @@
             <input
               type="text"
               name="codigo"
-              placeholder="ingrese el Codigo"
+              placeholder="ingrese el codigo"
               formControlName="codigo"
               class="form-control"
             />
           </div>
 
           <div class="input-group m-2 col-md-12">
-            <label class="input-group-text" for="inputGroupSelect01">Tipo Producto</label>
-            <select class="form-select" id="inputGroupSelect01">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <label class="input-group-text" for="inputGroupSelect01"
+              >Tipo Producto</label
+            >
+            <select class="form-select" formControlName="iD_tipoProducto">
+              <option *ngFor="let product of typeProducts" [value]="product.id">
+                {{ product.nombre }}
+              </option>
             </select>
           </div>
+
 
           <button class="btn btn-primary m-2" (click)="cleanForm()">
             Limpiar
