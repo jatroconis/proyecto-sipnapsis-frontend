@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Product } from 'src/app/models/product';
 import { SubProduct } from 'src/app/models/subProduct';
+import { ProductService } from 'src/app/services/product.service';
 import { SubProductService } from 'src/app/services/sub-product.service';
 
 
@@ -12,8 +14,10 @@ import { SubProductService } from 'src/app/services/sub-product.service';
 export class SubproductComponent implements OnInit {
   subproducts: SubProduct[] = [];
   subproductForm!: FormGroup;
+  products: Product[] = [];
   constructor(
     public subproductService: SubProductService,
+    private _product: ProductService,
     private formBuilder : FormBuilder
   ) {
     this.initForm();
@@ -21,13 +25,26 @@ export class SubproductComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSubProducts();
+    this.getProducts();
   }
 
   initForm(): void{
     this.subproductForm = this.formBuilder.group({
       id: 0,
-      nombre: ['', Validators.required]
+      nombre: ['', Validators.required],
+      descripcion: ['', Validators.required],
+      cantidad: ['', Validators.required],
+      valor: ['', Validators.required],
+      valor_neto: ['', Validators.required],
+      valor_impuestos: ['', Validators.required],
+      fecha_caducidad: ['', Validators.required],
+      iD_producto: ['', Validators.required]
     });
+  }
+
+  getProducts(): void{
+    this._product.getProduct()
+      .subscribe(products => this.products = products);
   }
 
   cleanForm(){

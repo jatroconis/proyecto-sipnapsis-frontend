@@ -73,9 +73,8 @@
           <div class="form-group m-2 col-md-12">
             <input
               type="date"
-              name="cantidad"
               placeholder="ingrese la Fecha de caducidad"
-              formControlName="cantidad"
+              formControlName="fecha_caducidad"
               class="form-control"
             />
           </div>
@@ -83,11 +82,10 @@
 
           <div class="input-group m-2 col-md-12">
             <label class="input-group-text" for="inputGroupSelect01">Producto</label>
-            <select class="form-select" id="inputGroupSelect01">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select class="form-select" formControlName="iD_producto">
+              <option *ngFor="let product of products" [value]="product.id">
+                {{ product.nombre }}
+              </option>
             </select>
           </div>
 

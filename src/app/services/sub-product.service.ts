@@ -7,7 +7,7 @@ import { SubProduct } from '../models/subProduct';
   providedIn: 'root'
 })
 export class SubProductService {
-  URL_SUB_PRODUCT: string = `${environment.apiUrl}/subProductos`;
+  URL_SUB_PRODUCT: string = `${environment.apiUrl}/Subproductos`;
   constructor(private http : HttpClient) { }
 
   save(subProduct: SubProduct){
