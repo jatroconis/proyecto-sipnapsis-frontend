@@ -1,50 +1,93 @@
 <div class="row">
-
   <!-- FORM -->
   <div class="col-md-4">
     <div class="card">
       <div class="card-body p-4">
-
         <!-- FORM -->
-        <!-- <form #formCategory="ngForm" (ngSubmit)="onSave(formCategory)" > -->
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
           <!-- THE Id's Employee -->
-          <input type="hidden" name="_id">
+          <input type="hidden" name="_id" />
 
-          <h2>Categoria</h2>
+          <h2>Producto</h2>
 
-          <!-- <div class="form-group m-2 col-md-12">
-            <input type="text" name="name" [(ngModel)]="name" placeholder="ingrese el nombre" class="form-control">
+          <div class="form-group m-2 col-md-12">
+            <input
+              type="text"
+              name="nombre"
+              placeholder="ingrese el nombre"
+              formControlName="nombre"
+              class="form-control"
+            />
           </div>
 
-          <button class="btn btn-primary m-2" (click)="cleanForm(formCategory)" >Limpiar</button>
-          <button class="btn btn-secondary m-2" type="submit">Guardar</button> -->
-      <!-- </form> -->
+          <div class="form-group m-2 col-md-12">
+            <input
+              type="text"
+              name="descripcion"
+              placeholder="ingrese la Descripcion"
+              formControlName="descripcion"
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group m-2 col-md-12">
+            <input
+              type="text"
+              name="codigo"
+              placeholder="ingrese el Codigo"
+              formControlName="codigo"
+              class="form-control"
+            />
+          </div>
+
+          <div class="input-group m-2 col-md-12">
+            <label class="input-group-text" for="inputGroupSelect01">Tipo Producto</label>
+            <select class="form-select" id="inputGroupSelect01">
+              <option selected>Choose...</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+
+          <button class="btn btn-primary m-2" (click)="cleanForm()">
+            Limpiar
+          </button>
+          <button class="btn btn-secondary m-2" type="submit" [disabled]="productForm.invalid">
+            Guardar
+          </button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- TABLE -->
-<div class="col-md-8">
-  <table class="table table-striped">
-    <thead>
-      <th>ID</th>
-      <th>Nombre</th>
-      <th>Operaciones</th>
-    </thead>
-    <tbody>
-      <tr >
-        <td>{{ "categorias._id" }}</td>
-        <td>{{ "categorias.name" }}</td>
-        <td>
-          <a class="btn btn-secondary btn-sm">
-            <i class="material-icons">Editar</i>
-          </a>
-          <a  class="btn btn-danger btn-sm">
-            <i class="material-icons">Borrar</i>
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <!-- TABLE -->
+  <div class="col-md-8">
+    <table class="table table-striped">
+      <thead>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Codigo</th>
+        <th>Tipo Producto</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.id }}</td>
+          <td>{{ product.nombre }}</td>
+          <td>{{ product.descripcion }}</td>
+          <td>{{ product.codigo }}</td>
+          <td>{{ product.iD_tipoProducto }}</td>
+          <td>
+            <a class="btn btn-secondary btn-sm" (click)="setProduct(product)">
+              <i class="material-icons">Editar</i>
+            </a>
+            <a class="btn btn-danger btn-sm" (click)="deleteById(product.id)">
+              <i class="material-icons">Borrar</i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

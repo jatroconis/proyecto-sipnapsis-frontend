@@ -6,7 +6,7 @@ import { SubProduct } from '../models/subProduct';
 @Injectable({
   providedIn: 'root'
 })
-export class SubProducngtService {
+export class SubProductService {
   URL_SUB_PRODUCT: string = `${environment.apiUrl}/subProductos`;
   constructor(private http : HttpClient) { }
 

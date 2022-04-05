@@ -8,6 +8,7 @@ import { ProductTypeComponent } from './pages/product-type/product-type.componen
 import { MainCategoryComponent } from './pages/main-category/main-category.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductComponent } from './pages/product/product.component';
+import { SubproductComponent } from './pages/subproduct/subproduct.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ProductComponent } from './pages/product/product.component';
     LayoutComponent,
     ProductTypeComponent,
     MainCategoryComponent,
-    ProductComponent
+    ProductComponent,
+    SubproductComponent
   ],
   imports: [
     CommonModule,
