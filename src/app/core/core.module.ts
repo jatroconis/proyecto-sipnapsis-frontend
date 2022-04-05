@@ -4,22 +4,24 @@ import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { RouterModule } from '@angular/router';
-import { CategoryModule } from './pages/category/category.module';
-import { ProductModule } from './pages/product/product.module';
 import { ProductTypeComponent } from './pages/product-type/product-type.component';
+import { MainCategoryComponent } from './pages/main-category/main-category.component';
+import { FormsModule } from '@angular/forms';
+import { ProductComponent } from './pages/product/product.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     NavbarComponent,
     LayoutComponent,
-    ProductTypeComponent
+    ProductTypeComponent,
+    MainCategoryComponent,
+    ProductComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    CategoryModule,
-    ProductModule
+    FormsModule
   ]
 })
 export class CoreModule { }
