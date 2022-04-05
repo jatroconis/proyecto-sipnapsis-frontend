@@ -1,10 +1,4 @@
-export class category{
-  constructor(_id="", name=""){
-    this._id = _id;
-    this.name = name;
-  }
-
-  _id: string ;
-  name: string;
-
+export interface category{
+  id: number;
+  nombre: string;
 }

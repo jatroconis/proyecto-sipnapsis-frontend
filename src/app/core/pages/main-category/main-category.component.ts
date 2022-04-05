@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms';
   providers: [CategoryService]
 })
 export class MainCategoryComponent implements OnInit {
-
+  categorys: category[] = [];
   constructor(public categoryService: CategoryService) { }
 
   ngOnInit(): void {
@@ -23,16 +23,17 @@ export class MainCategoryComponent implements OnInit {
   cleanForm(form? : NgForm){
     if (form) {
       form.reset();
-      this.categoryService.selectedcategory = new category();
     }
   }
 
   // obtener lista de categorias de la base de datos
   getCategories() {
-
-    this.categoryService.getCategories().subscribe(res => {
-      this.categoryService.categories = res as category[];
-      console.log(res)
+    this.categoryService.getCategories()
+      .subscribe(res => {
+        console.log(res);
+        this.categorys = res;
+    }, badRequest => {
+      console.log(badRequest);
     });
 
   }

@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'https://sinapsisproject20220404003102.azurewebsites.net/api'
 };
 
 /*

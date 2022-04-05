@@ -1,14 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { CategoryService } from 'src/app/services/category.service';
-
+import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
-    CategoryService
+    CommonModule
   ]
 })
 export class MainCategoryModule { }

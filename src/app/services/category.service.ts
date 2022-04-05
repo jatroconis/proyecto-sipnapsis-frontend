@@ -2,35 +2,31 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
 import { category } from '../models/category';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
 
-  selectedcategory : category ;
-  categories : category[] = [];
+  URL_API: string = environment.apiUrl;
 
-  readonly URL_API = 'https://localhost:44326/api/Categorias';
-
-  constructor(public http: HttpClient) {
-    this.selectedcategory = new category();
-  }
+  constructor(public http: HttpClient) {}
 
   postCategory(category: category) {
-    return this.http.post(this.URL_API, category);
+    return this.http.post(`${this.URL_API}/categorias`, category);
   }
 
   getCategories() {
-    return this.http.get(this.URL_API);
+    return this.http.get<category[]>(`${this.URL_API}/categorias`);
   }
 
   putCategory(category: category) {
-    return this.http.put(this.URL_API + `/${category._id}`, category);
+    return this.http.put(`${this.URL_API}/categorias/${category.id}`, category);
   }
 
   deleteCategory(_id: string) {
-    return this.http.delete(this.URL_API + `/${_id}`);
+    return this.http.delete(`${this.URL_API}/categorias/${_id}`);
   }
 
 }
